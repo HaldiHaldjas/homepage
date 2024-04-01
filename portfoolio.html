@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfoolio</title>
+    <link rel="stylesheet" href="stiilid.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Raleway&display=swap">
+    <link rel="icon" type="icon" href="images/icons8-star-64.png">
+    <script src="date.js"></script>
+  </head>
+<body>
+<header>
+    <div>
+      <div>
+        <nav class="nav">
+          <div class="flex-container">
+            <a href="index.html">
+                <!-- Miks relative pathiga .avif formaadis logo ei lae aga absolute pathiga laeb? viga brauseris? oigused olemas ka -->
+                <!-- <img src="/images/bird-colorful-logo-gradient-vector.png" class=image alt="Logo" width="150" height="150"> -->
+              <img src="images/bird-colorful-logo-gradient-vector.avif" class=image alt="Logo" width="150" height="150">
+            </a>
+            <h1>Portfoolio</h1>
+          </div>
+        </nav>
+      </div>
+      <div>     
+        </div>
+        <div class="navbar">
+              <a href="index.html">Esilehele</a>
+        </div>
+      </div>  
+</header>
+<div>
+<div class="image-container">
+    <div class="card" style="width: 18rem;">
+      <img class="card-img-top" src="images/ruhnu1.jpeg" alt="Card image cap">
+      <div class="card-body" style="height: 300px; overflow-y: auto;">
+        <h3 class="card-title">Special title</h3>
+        <p class="flex-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+      </div>
+    </div>
+    <div class="card" style="width: 18rem;">
+      <img class="card-img-top" src="images/ruhnu2.jpeg" alt="Card image cap">
+      <div class="card-body" style="height: 300px; overflow-y: auto;">
+        <h3 class="card-title">Special title</h3>
+        <p class="flex-text">Some more quick example text to build on the card title and make up the bulk of the card's content.</p>
+      </div>
+    </div>
+    <div class="card" style="width: 18rem;">
+      <img class="card-img-top" src="images/ruhnu3.jpeg" alt="Card image cap">
+      <div class="card-body" style="height: 300px; overflow-y: auto;">
+        <h3 class="card-title">Special title</h3>
+        <p class="flex-text">Some quick example text to build on the card title and make up the bulk of the card's content. Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+      </div>
+    </div>
+</div>
+<div class="image-container">
+  <div class="card" style="width: 18rem;">
+    <img class="card-img-top" src="images/ruhnu4.jpeg" alt="Card image cap">
+    <div class="card-body" style="height: 300px; overflow-y: auto;">
+      <h3 class="card-title">Special title</h3>
+      <p class="flex-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+    </div>
+  </div>
+  <div class="card" style="width: 18rem;">
+    <img class="card-img-top" src="images/ruhnu5.jpeg" alt="Card image cap">
+    <div class="card-body" style="height: 300px; overflow-y: auto;">
+      <h3 class="card-title">Special title treatment</h3>
+      <p class="flex-text">Some quick example text to build on the card title and make up the bulk of the card's content. Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+    </div>
+  </div>
+  <div class="card" style="width: 18rem;">
+    <img class="card-img-top" src="images/ruhnu6.jpeg" alt="Card image cap">
+    <div class="card-body" style="height: 300px; overflow-y: auto;">
+      <h3 class="card-title">Special title</h3>
+      <p class="flex-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+    </div>
+  </div>
+</div>
+</div>
+<br>
+<br>
+</body>
+<footer>
+    Copyright © 2024 Kõik õigused reserveeritud. 
+    <p id="today">
+      <script>
+        var now = new Date();
+        var options = {year: 'numeric', month: 'long', day: 'numeric' };
+        var datetime = now.toLocaleString('et-EE', options);
+        document.getElementById("today").innerHTML = "Täna on " + datetime;
+    </script>  
+    </p>
+  </footer>
+</html>
