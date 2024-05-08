@@ -5,6 +5,7 @@
             <a class="navbar-brand" href="index.php?page=authors"> Autorid</a>
             <a class="navbar-brand" href="index.php?page=new_post"> Uus postitus</a>
             <a class="navbar-brand" href="index.php?page=change_posts"> Kõik postitused</a>
+            <a class="navbar-brand" href="index.html"> Eelmine versioon</a>
         </div>
     </nav>
 </div>
