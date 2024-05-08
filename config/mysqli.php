@@ -4,7 +4,7 @@
     define("DB_PASS", "Parool1"); // Andmebaasi parool
     define("DB_NAME", "blog_posts"); // Andmebaasi nimi
     define("MAXPERPAGE", 5); // Mitu kirjet lehel (5)
-    
+
     class Db {
         // Meetod andmebaasi ühenduse loomiseks
         function dbConnect() {
