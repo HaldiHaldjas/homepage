@@ -1,4 +1,4 @@
-<?php require_once "config/mysqli.php"; ?>
+<?php require_once "config/connection.php"; ?>
 <!DOCTYPE html>
 <html lang="zxx">
 
