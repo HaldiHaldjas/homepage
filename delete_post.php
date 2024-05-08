@@ -11,7 +11,6 @@ if (isset($_GET["ids"]) && is_numeric($_GET["ids"])) {
         $url = $_SERVER["PHP_SELF"]."?page=delete_post";
         // header("Location: index.php?page=delete");
         header("Location: ".$url);
-        
 
     } else {
         $success = false;

@@ -1,10 +1,12 @@
 <h2 class="text-left">Kõik postitused</h2>
 <?php
 
-// sql lause, päring ja if lause
+
+// sql lause tabeli andmete kuvamiseks, päring ja if lause
 // nimi tuleks muuta all_posts.php
 
-$sql = "SELECT * FROM table1_posts ORDER BY added DESC LIMIT 10";
+// $sql = "SELECT * FROM table1_posts ORDER BY added DESC LIMIT 10";
+$sql = "SELECT * FROM table1_posts ORDER BY added DESC";
 $posts = $database->dbGetArray($sql); 
 echo $sql;
 ?>
@@ -22,7 +24,7 @@ echo $sql;
     <tbody>
         <?php 
         foreach($posts as $post){
-            $modified_date = isset($post['modified']) && $post['modified'] !== $post['added'] ? date('j. F, Y H:i', strtotime($post['modified'])) : 'Not modified';
+            $modified_date = isset($post['modified']) && $post['modified'] !== $post['added'] ? date('j. F, Y H:i', strtotime($post['modified'])) : 'Muutmata';
             $added_date = date('j. F, Y H:i', strtotime($post['added']));
         ?>
         <tr>
@@ -31,7 +33,7 @@ echo $sql;
             <td><?php echo $added_date; ?></td>
             <td><?php echo $modified_date; ?></td>
             <td>
-                <a class="nav-link" href="<?php echo $_SERVER['PHP_SELF']; ?>?page=change_posts_by_id" style="display: inline-block; margin-right: 10px;">
+                <a class="nav-link" href="<?php echo $_SERVER["PHP_SELF"]; ?>?page=change_posts_by_id&ids=<?php echo $post["id"]; ?>" style="display: inline-block; margin-right: 10px;">
                     <i class="fa-solid fa-pen-to-square text-warning"></i>
                 </a>
                 <a class="nav-link" href="<?php echo $_SERVER['PHP_SELF']; ?>?page=delete_post" style="display: inline-block;">
