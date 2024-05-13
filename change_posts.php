@@ -24,7 +24,9 @@ echo $sql;
     <tbody>
         <?php 
         foreach($posts as $post){
-            $modified_date = isset($post['modified']) && $post['modified'] !== $post['added'] ? date('j. F, Y H:i', strtotime($post['modified'])) : 'Muutmata';
+            // $modified_date = isset($post['modified']) && $post['modified'] !== $post['added'] ? date('j. F, Y H:i', strtotime($post['modified'])) : 'Muutmata';
+            $modified_date = isset($post['modified']) ? date('j. F, Y H:i', strtotime($post['modified'])) : 'Muutmata';
+
             $added_date = date('j. F, Y H:i', strtotime($post['added']));
         ?>
         <tr>

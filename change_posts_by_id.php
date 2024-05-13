@@ -1,5 +1,7 @@
 <?php
 
+require_once 'config/connection.php';
+
 // kontroll, kas aadressireal on id ja kas see on number
 if (isset($_GET["ids"]) && is_numeric($_GET["ids"])){
     $id = $_GET["ids"];
@@ -9,6 +11,8 @@ if (isset($_GET["ids"]) && is_numeric($_GET["ids"])){
     $res = $database->dbGetArray($sql); // küsib db andmeid 
     echo $sql; // testiks
     $database->show($res); // TEST näitab tervet massiivi
+
+    
     } 
     // Kas submit on vajutatud
     if (isset($_POST["submit"])){
@@ -17,16 +21,44 @@ if (isset($_GET["ids"]) && is_numeric($_GET["ids"])){
         $content = htmlspecialchars(trim($_POST["content"]));
         $img_link = filter_var($_POST["img_link"], FILTER_SANITIZE_URL); 
 
-        // Prepare the SQL statement
+        // prepare the SQL statement
         $updateSql = "UPDATE table1_posts 
             SET 
-            title = '" . $title . "',
-            author = '" . $author . "',
-            content = '" . $content . "',
-            img_link = '" . $img_link . "',
+            title = ?,
+            author = ?,
+            content = ?,
+            img_link = ?,
             modified = NOW()
             WHERE 
-            id = '?'";
+            id = ?";
+
+        try {
+            $stmt = $database->dbQuery($updateSql);
+            $stmt->bindParam(1, $title, PDO::PARAM_STR);
+            $stmt->bindParam(2, $author, PDO::PARAM_STR);
+            $stmt->bindParam(3, $content, PDO::PARAM_STR);
+            $stmt->bindParam(4, $img_link, PDO::PARAM_STR);
+            $stmt->bindParam(5, $id, PDO::PARAM_INT); // Bind ID as well
+
+            $stmt->execute();
+            $success = true;
+            $_POST = array();
+        } catch (PDOException $e) {
+            $success = false;
+            echo "Error updating post: " . $e->getMessage();
+        }
+        
+    }
+        // Prepare the SQL statement
+        // $updateSql = "UPDATE table1_posts 
+        //     SET 
+        //     title = '" . $title . "',
+        //     author = '" . $author . "',
+        //     content = '" . $content . "',
+        //     img_link = '" . $img_link . "',
+        //     modified = NOW()
+        //     WHERE 
+        //     id = '?'";
             // id = " . $id;
 
             // $sql = "INSERT INTO table1_posts 
@@ -44,20 +76,18 @@ if (isset($_GET["ids"]) && is_numeric($_GET["ids"])){
             // }
 
     // teeb andmebaasi päringu ja kontroll
-    if($database->dbQuery($updateSql)) {
-        $success = true;
-        $_POST = array();
-        $database->show($res); // TEST näitab tervet massiivi
-    } else {
-        $success = false;
-        echo error_log("no luck");
-    }
+    // if($database->dbQuery($updateSql)) {
+    //     $success = true;
+    //     $_POST = array();
+    //     $database->show($res); // TEST näitab tervet massiivi
+    // } else {
+    //     $success = false;
+    //     echo error_log("no luck");
+    // }
     
     echo $sql; // testiks
     $res = $database->dbGetArray($sql);
-    
     } 
-}
 
 
 ?>

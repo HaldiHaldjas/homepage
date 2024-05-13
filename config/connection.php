@@ -12,6 +12,7 @@ require_once 'config/db_config.php';
       
       } catch(PDOException $e) {
         echo "Error connecting to database: " . $e->getMessage();
+        exit();
       }
 
 class Db {
@@ -52,6 +53,25 @@ class Db {
         }
         return false;
     }
+
+    public function prepare($sql) {
+    $db = $this->connect();
+    if ($db) {
+        try {
+            $stmt = $db->prepare($sql);
+            return $stmt;
+        } catch (PDOException $e) {
+            echo "<strong>Database connection error:</strong> " . $e->getMessage();
+            exit;
+        }
+    }
+    return false;
+}
+
+    public function execute($stmt, $params = []) {
+    // ... (bind parameters and execute the statement)
+    }
+
 
     // Fetch data as an associative array (SELECT queries)
     function dbGetArray($sql) {
@@ -98,8 +118,7 @@ class Db {
     }
 }
 
-// Create a Db object for database interactions
+// Db object for database interactions
 $database = new Db;
-
     
 ?>
