@@ -9,7 +9,7 @@ if (isset($_GET["ids"]) && is_numeric($_GET["ids"])){
 
     $sql = "SELECT * FROM table1_posts WHERE id = ".$id;
     $res = $database->dbGetArray($sql); // küsib db andmeid 
-    echo $sql; // testiks
+    // echo $sql; // testiks
     $database->show($res); // TEST näitab tervet massiivi
 
     
@@ -24,13 +24,14 @@ if (isset($_GET["ids"]) && is_numeric($_GET["ids"])){
         // prepare the SQL statement
         $updateSql = "UPDATE table1_posts 
             SET 
-            title = ?,
-            author = ?,
-            content = ?,
-            img_link = ?,
+            title = :title,
+            author = :author,
+            content = :content,
+            img_link = :img_link,
             modified = NOW()
-            WHERE 
-            id = ?";
+            WHERE id=".$_GET["ids"];
+    
+    echo $updateSql;
 
         try {
             $stmt = $database->dbQuery($updateSql);
@@ -39,7 +40,7 @@ if (isset($_GET["ids"]) && is_numeric($_GET["ids"])){
             $stmt->bindParam(3, $content, PDO::PARAM_STR);
             $stmt->bindParam(4, $img_link, PDO::PARAM_STR);
             $stmt->bindParam(5, $id, PDO::PARAM_INT); 
-
+            echo $stmt;
             $stmt->execute();
             $success = true;
             $_POST = array();
@@ -85,7 +86,7 @@ if (isset($_GET["ids"]) && is_numeric($_GET["ids"])){
     //     echo error_log("no luck");
     // }
     
-    echo $sql; // testiks
+    // echo $sql; // testiks
     $res = $database->dbGetArray($sql);
     } 
 
@@ -131,13 +132,6 @@ if (isset($_GET["ids"]) && is_numeric($_GET["ids"])){
                 <div class="col">
                     <input type="submit" name="submit" value="Muuda postitust" class="btn btn-warning form-control">                        
                 </div>
-<!--                     <div class="col">
-                        <input type="hidden" name="sid" value="<?php if(isset($res[0]["id"])) {echo $res[0]["id"];} ?>">
-                        <input type="submit" name="submit" value="Muuda postitust" class="btn btn-warning form-control">                        
-                    </div> -->
-                    <!-- <div class="col">
-                        <button type="reset" class="btn btn-info form-control">Loobu muutmisest? Kustuta postitus!</button>
-                    </div> -->
 
                 </div>
             </form>
