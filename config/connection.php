@@ -54,20 +54,6 @@ class Db {
         return false;
     }
 
-    public function prepare($sql) {
-    $db = $this->connect();
-    if ($db) {
-        try {
-            $stmt = $db->prepare($sql);
-            return $stmt;
-        } catch (PDOException $e) {
-            echo "<strong>Database connection error:</strong> " . $e->getMessage();
-            exit;
-        }
-    }
-    return false;
-}
-
     public function execute($stmt, $params = []) {
     // ... (bind parameters and execute the statement)
     }

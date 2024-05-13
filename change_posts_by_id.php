@@ -38,7 +38,7 @@ if (isset($_GET["ids"]) && is_numeric($_GET["ids"])){
             $stmt->bindParam(2, $author, PDO::PARAM_STR);
             $stmt->bindParam(3, $content, PDO::PARAM_STR);
             $stmt->bindParam(4, $img_link, PDO::PARAM_STR);
-            $stmt->bindParam(5, $id, PDO::PARAM_INT); // Bind ID as well
+            $stmt->bindParam(5, $id, PDO::PARAM_INT); 
 
             $stmt->execute();
             $success = true;
